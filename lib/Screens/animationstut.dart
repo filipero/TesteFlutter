@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:apitest/loaderanim.dart';
+import 'package:apitest/Screens/loaderanim.dart';
 
 class Anim extends StatelessWidget {
   @override
