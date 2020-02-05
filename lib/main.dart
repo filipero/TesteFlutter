@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-
+import './Screens/loaderanim.dart';
+import './Screens/listviewapi.dart';
+import './Screens/riveanim.dart';
 void main() {
   runApp(new MaterialApp(
     home:HomePage()
@@ -14,26 +15,55 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  List<String> telas = ["HomePage","Lista populada por Rest API","Flutter loading animation","Rive animation"];
+  String telaAtual = "HomePage";
   int paginaAtual = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: FlatButton(onPressed:(){
+        title: Text(telaAtual)
+                  ,actions: <Widget>[
+                    FlatButton(onPressed:(){
                   this.setState((){
-                    paginaAtual < 3 ? paginaAtual++ : paginaAtual = 0;
-                  });},child: Icon(Icons.arrow_back, color: Colors.white,),)
+                    telaAtual = "HomePage";
+                  });},child: Icon(Icons.home, color: Colors.white,),)
+                  ],
       ),
-      body: paginaAtual == 0 ? ListView(
+      body: telaAtual == telas[0] ? ListView.builder(itemCount: telas == null ? 0 : telas.length,
+      itemBuilder: (BuildContext context, int index){
+        return telas[index] == "HomePage" ? Container() : RaisedButton(child: Text( telas[index] ),
+                onPressed: (){
+                  this.setState((){
+                    telaAtual = telas[index];
+                  });
+                });
+
+      }
+      
+      ): 
+      telaAtual == telas[1] ? Container(child:ApiList()):
+      telaAtual == telas[2] ? Container(child:new Center(child: Loader())):
+      telaAtual == telas[3] ? Container(child:RiveAnim()):
+      Container(color: Colors.red,height: double.infinity, width: double.infinity,),
+    );
+  }
+}
+
+
+
+
+
+/* ListView(
         children:<Widget>[
           Card(
           child:Row(
             children: <Widget>[
               
-              RaisedButton(child: Text('Nome do teste'),
+              RaisedButton(child: Text( telas[1] ),
                 onPressed: (){
                   this.setState((){
-                    paginaAtual < 3 ? paginaAtual++ : paginaAtual = 0;
+                    telaAtual = telas[1];
                   });
                 })
               
@@ -41,7 +71,4 @@ class _HomePageState extends State<HomePage> {
             ],
           )),
         ],
-      ): paginaAtual == 1 ?Container(color: Colors.black,height: 100, width: 100,):Container(color: Colors.amber,height: 100, width: 100),
-    );
-  }
-}
+      ) */

@@ -33,24 +33,24 @@ class LoaderState extends State<Loader> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return new Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Container(
           margin: EdgeInsets.only(bottom: 5),
-          color: Colors.white,
+          color: Colors.blue,
           height: 3.0,
           width: animation.value * 100,
         ),
         Container(
           margin: EdgeInsets.only(bottom: 5),
-          color: Colors.white,
+          color: Colors.blue,
           height: 3.0,
           width: animation.value * 75,
         ),
         Container(
           margin: EdgeInsets.only(bottom: 5),
-          color: Colors.white,
+          color: Colors.blue,
           height: 3.0,
           width: animation.value * 50,
         ),
@@ -58,3 +58,4 @@ class LoaderState extends State<Loader> with SingleTickerProviderStateMixin {
     );
   }
 }
+/*  */

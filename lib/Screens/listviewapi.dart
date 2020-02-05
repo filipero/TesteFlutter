@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class HomePage extends StatefulWidget {
+class ApiList extends StatefulWidget {
   @override
-  HomePageState createState() => new HomePageState();
+  ApiListState createState() => new ApiListState();
 }
 
-class HomePageState extends State<HomePage> {
+class ApiListState extends State<ApiList> {
   List data;
 
   Future<String> getData() async {
