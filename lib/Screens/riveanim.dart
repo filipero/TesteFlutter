@@ -33,7 +33,7 @@ class RiveAnimState extends State<RiveAnim> with SingleTickerProviderStateMixin 
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(color: Colors.blue,child: FlareActor("assets/rive.flr"),);
     /* new FlareActor("assets/Liquid_Loader.flr", 
     alignment:Alignment.center, 
     fit:BoxFit.contain, 
