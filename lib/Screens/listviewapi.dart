@@ -29,11 +29,7 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: Text("Listviews"),
-      ),
-      body: new ListView.builder(
+    return new ListView.builder(
         itemCount: data == null ? 0 : data.length,
         itemBuilder: (BuildContext context, int index) {
           return Container(
@@ -43,7 +39,6 @@ class HomePageState extends State<HomePage> {
             ),
           );
         },
-      ),
-    );
+        );
   }
 }
