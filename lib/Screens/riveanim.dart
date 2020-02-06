@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 
@@ -6,37 +8,46 @@ class RiveAnim extends StatefulWidget {
   State createState() => new RiveAnimState();
 }
 
-class RiveAnimState extends State<RiveAnim> with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
+class RiveAnimState extends State<RiveAnim>
+    with SingleTickerProviderStateMixin {
+  int index = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    controller = new AnimationController(
-        duration: new Duration(milliseconds: 800), vsync: this);
-    animation =
-        new CurvedAnimation(parent: controller, curve: Curves.easeInOut);
-    animation.addListener(() {
-      this.setState(() {});
-    });
-
-    animation.addStatusListener((AnimationStatus status) {});
-    controller.repeat();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
+  List<String> animations = [
+    "night_idle",
+    "switch_day",
+    "day_idle",
+    "switch_night"
+  ];
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.blue,child: FlareActor("assets/rive.flr"),);
-    /* new FlareActor("assets/Liquid_Loader.flr", 
-    alignment:Alignment.center, 
-    fit:BoxFit.contain, 
-    animation:"idle");   */  
+    return Container(
+      child: GestureDetector(
+        onTap: () {
+          this.setState(() {
+            index == 3 ? index = 0 : index++;
+            index == 1
+                ? Timer(Duration(milliseconds: 500), () {
+                    setState(() {
+                      index++;
+                    });
+                  })
+                : null;
+            index == 3
+                ? Timer(Duration(milliseconds: 500), () {
+                    setState(() {
+                      index = 0;
+                    });
+                  })
+                : null;
+          });
+        },
+        child: FlareActor(
+          "assets/switch_daytime.flr",
+          animation: animations[index],
+          alignment: Alignment.center,
+          fit: BoxFit.contain,
+        ),
+      ),
+    );
   }
 }
