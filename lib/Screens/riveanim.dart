@@ -20,34 +20,45 @@ class RiveAnimState extends State<RiveAnim>
   ];
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: GestureDetector(
-        onTap: () {
-          this.setState(() {
-            index == 3 ? index = 0 : index++;
-            index == 1
-                ? Timer(Duration(milliseconds: 500), () {
-                    setState(() {
-                      index++;
-                    });
-                  })
-                : null;
-            index == 3
-                ? Timer(Duration(milliseconds: 500), () {
-                    setState(() {
-                      index = 0;
-                    });
-                  })
-                : null;
-          });
-        },
-        child: FlareActor(
-          "assets/switch_daytime.flr",
-          animation: animations[index],
-          alignment: Alignment.center,
-          fit: BoxFit.contain,
+    return Card(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Container(child:Text('Aperte no Switch para mudar o estado')),
+              Container(
+        height: 40,
+        width: 80,
+        child: GestureDetector(
+              onTap: () {
+                this.setState(() {
+                  index == 3 ? index = 0 : index++;
+                  index == 1
+                      ? Timer(Duration(milliseconds: 500), () {
+                          setState(() {
+                            index++;
+                          });
+                        })
+                      : null;
+                  index == 3
+                      ? Timer(Duration(milliseconds: 500), () {
+                          setState(() {
+                            index = 0;
+                          });
+                        })
+                      : null;
+                });
+              },
+              child: FlareActor(
+                "assets/switch_daytime.flr",
+                animation: animations[index],
+                alignment: Alignment.center,
+                fit: BoxFit.contain,
+              ),
         ),
       ),
+      
+            ],
+          ),
     );
   }
 }

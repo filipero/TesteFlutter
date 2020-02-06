@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './Screens/loaderanim.dart';
 import './Screens/listviewapi.dart';
 import './Screens/riveanim.dart';
+import './Screens/bottombaranimation.dart';
 
 void main() {
   runApp(new MaterialApp(home: HomePage()));
@@ -17,7 +18,8 @@ class _HomePageState extends State<HomePage> {
     "Repositório de testes",
     "Lista populada por Rest API",
     "Flutter loading animation",
-    "Animação de um switch utilizando Rive.app"
+    "Animação de um switch utilizando Rive.app",
+    "Barra inferior de navegação utilizando Rive.app"
   ];
   String telaAtual = telas[0].toString();
   int paginaAtual = 0;
@@ -60,7 +62,9 @@ class _HomePageState extends State<HomePage> {
                   ? Container(child: new Center(child: Loader()))
                   : telaAtual == telas[3]
                       ? Container(child: RiveAnim())
-                      : Container(
+                      : telaAtual == telas[4]
+                      ? Container(child: BottomBarAnim()):
+                       Container(
                           color: Colors.red,
                           height: double.infinity,
                           width: double.infinity,
@@ -68,3 +72,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+//BottomBarAnim
