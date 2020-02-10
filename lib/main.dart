@@ -3,6 +3,7 @@ import './Screens/loaderanim.dart';
 import './Screens/listviewapi.dart';
 import './Screens/riveanim.dart';
 import './Screens/bottombaranimation.dart';
+import './Screens/marvelheroes.dart';
 
 void main() {
   runApp(new MaterialApp(home: HomePage()));
@@ -19,7 +20,8 @@ class _HomePageState extends State<HomePage> {
     "Lista populada por Rest API",
     "Flutter loading animation",
     "Animação de um switch utilizando Rive.app",
-    "Barra inferior de navegação utilizando Rive.app"
+    "Barra inferior de navegação utilizando Rive.app",
+    "Lista de heróis da Marvel"
   ];
   String telaAtual = telas[0].toString();
   int paginaAtual = 0;
@@ -64,6 +66,8 @@ class _HomePageState extends State<HomePage> {
                       ? Container(child: RiveAnim())
                       : telaAtual == telas[4]
                       ? Container(child: BottomBarAnim()):
+                      telaAtual == telas[5]
+                      ? Container(child: MarvelHeroes()):
                        Container(
                           color: Colors.red,
                           height: double.infinity,
