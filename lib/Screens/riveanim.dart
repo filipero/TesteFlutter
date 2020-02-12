@@ -21,14 +21,14 @@ class RiveAnimState extends State<RiveAnim>
   @override
   Widget build(BuildContext context) {
     return Card(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Container(child:Text('Aperte no Switch para mudar o estado')),
-              Container(
-        height: 40,
-        width: 80,
-        child: GestureDetector(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Container(child: Text('Aperte no Switch para mudar o estado')),
+          Container(
+            height: 40,
+            width: 80,
+            child: GestureDetector(
               onTap: () {
                 this.setState(() {
                   index == 3 ? index = 0 : index++;
@@ -54,11 +54,10 @@ class RiveAnimState extends State<RiveAnim>
                 alignment: Alignment.center,
                 fit: BoxFit.contain,
               ),
-        ),
-      ),
-      
-            ],
+            ),
           ),
+        ],
+      ),
     );
   }
 }
