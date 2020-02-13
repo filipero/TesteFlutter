@@ -65,14 +65,14 @@ class _HomePageState extends State<HomePage> {
                   : telaAtual == telas[3]
                       ? Container(child: RiveAnim())
                       : telaAtual == telas[4]
-                      ? Container(child: BottomBarAnim()):
-                      telaAtual == telas[5]
-                      ? Container(child: MarvelHeroes()):
-                       Container(
-                          color: Colors.red,
-                          height: double.infinity,
-                          width: double.infinity,
-                        ),
+                          ? Container(child: BottomBarAnim())
+                          : telaAtual == telas[5]
+                              ? Container(child: MarvelHeroes())
+                              : Container(
+                                  color: Colors.red,
+                                  height: double.infinity,
+                                  width: double.infinity,
+                                ),
     );
   }
 }

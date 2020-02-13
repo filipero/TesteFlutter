@@ -38,14 +38,11 @@ class RiveAnimState extends State<RiveAnim>
                             index++;
                           });
                         })
-                      : null;
-                  index == 3
-                      ? Timer(Duration(milliseconds: 500), () {
+                      : Timer(Duration(milliseconds: 500), () {
                           setState(() {
                             index = 0;
                           });
-                        })
-                      : null;
+                        });
                 });
               },
               child: FlareActor(
