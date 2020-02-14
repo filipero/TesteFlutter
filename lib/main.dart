@@ -4,9 +4,10 @@ import './Screens/listviewapi.dart';
 import './Screens/riveanim.dart';
 import './Screens/bottombaranimation.dart';
 import './Screens/marvelheroes.dart';
+import './system/theme.dart';
 
 void main() {
-  runApp(new MaterialApp(home: HomePage()));
+  runApp(new MaterialApp(theme: temaPadrao,home: HomePage()));
 }
 
 class HomePage extends StatefulWidget {
@@ -44,35 +45,42 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: telaAtual == telas[0]
-          ? ListView.builder(
-              itemCount: telas == null ? 0 : telas.length,
-              itemBuilder: (BuildContext context, int index) {
-                return telas[index] == telas[0]
-                    ? Container()
-                    : RaisedButton(
-                        child: Text(telas[index]),
-                        onPressed: () {
-                          this.setState(() {
-                            telaAtual = telas[index];
-                          });
-                        });
-              })
-          : telaAtual == telas[1]
-              ? Container(child: ApiList())
-              : telaAtual == telas[2]
-                  ? Container(child: new Center(child: Loader()))
-                  : telaAtual == telas[3]
-                      ? Container(child: RiveAnim())
-                      : telaAtual == telas[4]
-                          ? Container(child: BottomBarAnim())
-                          : telaAtual == telas[5]
-                              ? Container(child: MarvelHeroes())
-                              : Container(
-                                  color: Colors.red,
-                                  height: double.infinity,
-                                  width: double.infinity,
-                                ),
+      body: Container(
+        color: temaPadrao.backgroundColor,
+        child: telaAtual == telas[0]
+            ? ListView.builder(
+                itemCount: telas == null ? 0 : telas.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return telas[index] == telas[0]
+                      ? Container()
+                      : Container(
+                        margin: EdgeInsets.symmetric(horizontal: 40,vertical: 15),
+                        height: 50,
+                        child: RaisedButton(
+                            child: Text(telas[index]),
+                            onPressed: () {
+                              this.setState(() {
+                                telaAtual = telas[index];
+                              });
+                            }),
+                      );
+                })
+            : telaAtual == telas[1]
+                ? ApiList()
+                : telaAtual == telas[2]
+                    ? new Center(child: Loader())
+                    : telaAtual == telas[3]
+                        ? RiveAnim()
+                        : telaAtual == telas[4]
+                            ? BottomBarAnim()
+                            : telaAtual == telas[5]
+                                ? MarvelHeroes()
+                                : Container(
+                                    color: Colors.red[600],
+                                    height: double.infinity,
+                                    width: double.infinity,
+                                  ),
+      ),
     );
   }
 }
