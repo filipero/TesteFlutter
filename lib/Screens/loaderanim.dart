@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class Loader extends StatefulWidget {
   @override
   State createState() => new LoaderState();

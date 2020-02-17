@@ -7,7 +7,7 @@ import './Screens/marvelheroes.dart';
 import './system/theme.dart';
 
 void main() {
-  runApp(new MaterialApp(theme: temaPadrao,home: HomePage()));
+  runApp(new MaterialApp(theme: temaPadrao, home: HomePage()));
 }
 
 class HomePage extends StatefulWidget {
@@ -36,6 +36,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               this.setState(() {
                 telaAtual = telas[0];
+                Navigator.canPop(context) ? Navigator.pop(context) : null;
               });
             },
             child: Icon(
@@ -54,16 +55,17 @@ class _HomePageState extends State<HomePage> {
                   return telas[index] == telas[0]
                       ? Container()
                       : Container(
-                        margin: EdgeInsets.symmetric(horizontal: 40,vertical: 15),
-                        height: 50,
-                        child: RaisedButton(
-                            child: Text(telas[index]),
-                            onPressed: () {
-                              this.setState(() {
-                                telaAtual = telas[index];
-                              });
-                            }),
-                      );
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 40, vertical: 15),
+                          height: 50,
+                          child: RaisedButton(
+                              child: Text(telas[index]),
+                              onPressed: () {
+                                this.setState(() {
+                                  telaAtual = telas[index];
+                                });
+                              }),
+                        );
                 })
             : telaAtual == telas[1]
                 ? ApiList()

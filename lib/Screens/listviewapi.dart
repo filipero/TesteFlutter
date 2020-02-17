@@ -30,15 +30,15 @@ class ApiListState extends State<ApiList> {
   @override
   Widget build(BuildContext context) {
     return new ListView.builder(
-        itemCount: data == null ? 0 : data.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-            height: 80,
-            child: new Card(
-              child: new Text(data[index]["title"]),
-            ),
-          );
-        },
+      itemCount: data == null ? 0 : data.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          height: 80,
+          child: new Card(
+            child: new Text(data[index]["title"]),
+          ),
         );
+      },
+    );
   }
 }

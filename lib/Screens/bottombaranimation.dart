@@ -9,9 +9,6 @@ class BottomBarAnim extends StatefulWidget {
 
 class BottomBarAnimState extends State<BottomBarAnim>
     with SingleTickerProviderStateMixin {
-
-
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,8 +17,12 @@ class BottomBarAnimState extends State<BottomBarAnim>
       height: double.infinity,
       color: Colors.black,
       child: Container(
-        width: 1000,
-        height: 200,
-        child: FlareActor("assets/MultiOptionButton.flr",animation: "deactivate",)),    );
+          width: 1000,
+          height: 200,
+          child: FlareActor(
+            "assets/MultiOptionButton.flr",
+            animation: "deactivate",
+          )),
+    );
   }
 }

@@ -65,74 +65,67 @@ class _MarvelHeroesState extends State<MarvelHeroes> {
             child: new Card(
               child: Padding(
                 padding: const EdgeInsets.all(15),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                        child: data[index]['thumbnail']['path'] == null
-                            ? Container(
-                                width: 100,
-                                height: 100,
-                                color: Colors.blueAccent,
-                              )
-                            : Image.network(
-                                data[index]['thumbnail']['path'].toString() +
-                                    '.' +
-                                    data[index]['thumbnail']['extension']
-                                        .toString(),
-                                fit: BoxFit.fill,
-                              ),
-                      ),
-                      Container(
-                          child: Text(data[index]['name'] == null
-                              ? ''
-                              : data[index]['name'].toString())),
-                    ]),
+                child: Center(
+                    child: Text(data[index]['name'] == null
+                        ? ''
+                        : data[index]['name'].toString())),
               ),
             ),
             onTap: () {
-              showBottomSheet(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        color: Colors.white,
-                        height: 300,
-                        width: double.infinity,
-                        child: Column(
-                          children: <Widget>[
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Text(
-                                  data[index]['name'].toString(),
-                                  style: TextStyle(fontSize: 28),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Center(
-                              child: Container(
-                                height: 200,
-                                child: Image.network(
-                                  data[index]['thumbnail']['path'].toString() +
-                                      '.' +
-                                      data[index]['thumbnail']['extension']
-                                          .toString(),
-                                  fit: BoxFit.fill,
-                                ),
+              Navigator.canPop(context)
+                  ? Navigator.pop(context)
+                  : showBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            color: Colors.grey[200],
+                            height: 250,
+                            width: double.infinity,
+                            child: FittedBox(
+                              fit: BoxFit.contain,
+                              child: Column(
+                                children: <Widget>[
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Text(
+                                        data[index]['name'].toString(),
+                                        style: TextStyle(
+                                            fontSize: 28, color: Colors.black),
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Center(
+                                    child: Container(
+                                      height: 200,
+                                      margin: EdgeInsets.only(bottom: 20),
+                                      child: Image.network(
+                                        data[index]['thumbnail']['path']
+                                                .toString() +
+                                            '.' +
+                                            data[index]['thumbnail']
+                                                    ['extension']
+                                                .toString(),
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                                  )
+                                ],
                               ),
-                            )
-                          ],
-                        ),
-                      ),
-                    );
-                  });
+                            ),
+                          ),
+                        );
+                      });
             },
           ),
         );
