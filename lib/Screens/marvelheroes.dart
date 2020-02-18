@@ -10,7 +10,8 @@ class MarvelHeroes extends StatefulWidget {
   _MarvelHeroesState createState() => _MarvelHeroesState();
 }
 
-class _MarvelHeroesState extends State<MarvelHeroes> {
+class _MarvelHeroesState extends State<MarvelHeroes>
+    with SingleTickerProviderStateMixin {
   ScrollController _scrollController = new ScrollController();
   int offset = 0;
   List<dynamic> data = new List();
@@ -38,7 +39,6 @@ class _MarvelHeroesState extends State<MarvelHeroes> {
   void initState() {
     super.initState();
     fetchdata();
-
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
@@ -47,12 +47,12 @@ class _MarvelHeroesState extends State<MarvelHeroes> {
     });
   }
 
-/*   @override
+  @override
   void dispose() {
     _scrollController.dispose();
     super.dispose();
   }
- */
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -86,7 +86,7 @@ class _MarvelHeroesState extends State<MarvelHeroes> {
                             height: 250,
                             width: double.infinity,
                             child: FittedBox(
-                              fit: BoxFit.contain,
+                              fit: BoxFit.fitHeight,
                               child: Column(
                                 children: <Widget>[
                                   SizedBox(
@@ -101,6 +101,15 @@ class _MarvelHeroesState extends State<MarvelHeroes> {
                                             fontSize: 28, color: Colors.black),
                                       )
                                     ],
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    child: Text(
+                                      data[index]['description'].toString(),
+                                    ),
                                   ),
                                   SizedBox(
                                     height: 20,
