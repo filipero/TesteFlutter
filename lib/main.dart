@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:oktoast/oktoast.dart';
 import './Screens/loaderanim.dart';
 import './Screens/listviewapi.dart';
 import './Screens/riveanim.dart';
 import './Screens/bottombaranimation.dart';
 import './Screens/marvelheroes.dart';
 import './system/theme.dart';
+import './Screens/toast.dart';
 
 void main() {
-  runApp(new MaterialApp(theme: temaPadrao, home: HomePage()));
+  runApp(OKToast(child: MaterialApp(theme: temaPadrao, home: HomePage())));
 }
 
 class HomePage extends StatefulWidget {
@@ -22,7 +24,8 @@ class _HomePageState extends State<HomePage> {
     "Flutter loading animation",
     "Animação de um switch utilizando Rive.app",
     "Barra inferior de navegação utilizando Rive.app",
-    "Lista de heróis da Marvel"
+    "Lista de heróis da Marvel",
+    "Toast notifications"
   ];
   String telaAtual = telas[0].toString();
   int paginaAtual = 0;
@@ -77,11 +80,13 @@ class _HomePageState extends State<HomePage> {
                             ? BottomBarAnim()
                             : telaAtual == telas[5]
                                 ? MarvelHeroes()
-                                : Container(
-                                    color: Colors.red[600],
-                                    height: double.infinity,
-                                    width: double.infinity,
-                                  ),
+                                : telaAtual == telas[6]
+                                    ? ToastNotify()
+                                    : Container(
+                                        color: Colors.red[600],
+                                        height: double.infinity,
+                                        width: double.infinity,
+                                      ),
       ),
     );
   }

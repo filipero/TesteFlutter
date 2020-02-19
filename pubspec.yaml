@@ -26,6 +26,7 @@ dependencies:
   http: 0.12.0+4
   flare_flutter: any
   flare_dart: any
+  oktoast: ^2.1.8
   
 dev_dependencies:
   flutter_test:
