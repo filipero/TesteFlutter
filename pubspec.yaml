@@ -27,6 +27,7 @@ dependencies:
   flare_flutter: any
   flare_dart: any
   oktoast: ^2.1.8
+  random_color: ^1.0.3
   
 dev_dependencies:
   flutter_test:

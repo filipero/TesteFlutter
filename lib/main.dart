@@ -7,6 +7,7 @@ import './Screens/bottombaranimation.dart';
 import './Screens/marvelheroes.dart';
 import './system/theme.dart';
 import './Screens/toast.dart';
+import './Screens/draggableitems.dart';
 
 void main() {
   runApp(OKToast(child: MaterialApp(theme: temaPadrao, home: HomePage())));
@@ -25,7 +26,8 @@ class _HomePageState extends State<HomePage> {
     "Animação de um switch utilizando Rive.app",
     "Barra inferior de navegação utilizando Rive.app",
     "Lista de heróis da Marvel",
-    "Toast notifications"
+    "Toast notifications",
+    "Draggable items"
   ];
   String telaAtual = telas[0].toString();
   int paginaAtual = 0;
@@ -82,11 +84,13 @@ class _HomePageState extends State<HomePage> {
                                 ? MarvelHeroes()
                                 : telaAtual == telas[6]
                                     ? ToastNotify()
-                                    : Container(
-                                        color: Colors.red[600],
-                                        height: double.infinity,
-                                        width: double.infinity,
-                                      ),
+                                    : telaAtual == telas[7]
+                                        ? DraggableItems()
+                                        : Container(
+                                            color: Colors.red[600],
+                                            height: double.infinity,
+                                            width: double.infinity,
+                                          ),
       ),
     );
   }
