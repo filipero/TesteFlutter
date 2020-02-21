@@ -10,24 +10,30 @@ class _DraggableItemsState extends State<DraggableItems> {
   List<Widget> movableItems = [];
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Container(
-          height: 500,
-          child: Stack(
+    return Container(
+      child: Container(
+        child: Stack(children: <Widget>[
+          Stack(
             children: movableItems,
           ),
-        ),
-        Container(
-          child: FloatingActionButton(
-            onPressed: () {
-              setState(() {
-                movableItems.add(MoveableStackItem());
-              });
-            },
-          ),
-        )
-      ],
+          Container(
+            margin: EdgeInsets.only(bottom: 40),
+            alignment: Alignment.bottomCenter,
+            child: FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: () {
+                setState(() {
+                  movableItems.add(MoveableStackItem());
+                });
+              },
+            ),
+          )
+        ]),
+      ),
     );
   }
 }
+/*
+
+
+        */

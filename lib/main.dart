@@ -8,6 +8,7 @@ import './Screens/marvelheroes.dart';
 import './system/theme.dart';
 import './Screens/toast.dart';
 import './Screens/draggableitems.dart';
+import './Screens/sliverrefresh.dart';
 
 void main() {
   runApp(OKToast(child: MaterialApp(theme: temaPadrao, home: HomePage())));
@@ -27,7 +28,8 @@ class _HomePageState extends State<HomePage> {
     "Barra inferior de navegação utilizando Rive.app",
     "Lista de heróis da Marvel",
     "Toast notifications",
-    "Draggable items"
+    "Draggable items",
+    "Sliver and refresh"
   ];
   String telaAtual = telas[0].toString();
   int paginaAtual = 0;
@@ -86,14 +88,14 @@ class _HomePageState extends State<HomePage> {
                                     ? ToastNotify()
                                     : telaAtual == telas[7]
                                         ? DraggableItems()
-                                        : Container(
-                                            color: Colors.red[600],
-                                            height: double.infinity,
-                                            width: double.infinity,
-                                          ),
+                                        : telaAtual == telas[8]
+                                            ? Refresher()
+                                            : Container(
+                                                color: Colors.red[600],
+                                                height: double.infinity,
+                                                width: double.infinity,
+                                              ),
       ),
     );
   }
 }
-
-//BottomBarAnim

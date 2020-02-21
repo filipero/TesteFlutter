@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class MarvelHeroes extends StatefulWidget {
   MarvelHeroes({Key key, this.title}) : super(key: key);
@@ -12,6 +13,7 @@ class MarvelHeroes extends StatefulWidget {
 
 class _MarvelHeroesState extends State<MarvelHeroes>
     with SingleTickerProviderStateMixin {
+  final RefreshController _refreshController = RefreshController();
   ScrollController _scrollController = new ScrollController();
   int offset = 0;
   List<dynamic> data = new List();
