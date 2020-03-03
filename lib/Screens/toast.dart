@@ -3,6 +3,7 @@ import 'package:oktoast/oktoast.dart';
 import '../Widgets/toast.dart';
 
 class ToastNotify extends StatefulWidget {
+  static const routeName = '/toast';
   @override
   _ToastNotifyState createState() => _ToastNotifyState();
 }

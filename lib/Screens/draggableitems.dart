@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../Widgets/moveablestackitem.dart';
 
 class DraggableItems extends StatefulWidget {
+  static const routeName = '/draggableitems';
   @override
   _DraggableItemsState createState() => _DraggableItemsState();
 }

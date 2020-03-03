@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class MarvelHeroes extends StatefulWidget {
+  static const routeName = '/marvel';
   MarvelHeroes({Key key, this.title}) : super(key: key);
   final String title;
 

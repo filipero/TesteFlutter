@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class ApiList extends StatefulWidget {
+  static const routeName = '/apilist';
   @override
   ApiListState createState() => new ApiListState();
 }
