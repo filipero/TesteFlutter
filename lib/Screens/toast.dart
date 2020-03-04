@@ -4,6 +4,7 @@ import '../Widgets/toast.dart';
 
 class ToastNotify extends StatefulWidget {
   static const routeName = '/toast';
+  static const pageTitle = 'Toast notification';
   @override
   _ToastNotifyState createState() => _ToastNotifyState();
 }

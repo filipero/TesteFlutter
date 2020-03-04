@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 
 class MarvelHeroes extends StatefulWidget {
   static const routeName = '/marvel';
+  static const pageTitle = 'Marvel Heroes List';
   MarvelHeroes({Key key, this.title}) : super(key: key);
   final String title;
 
@@ -56,109 +57,108 @@ class _MarvelHeroesState extends State<MarvelHeroes>
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      controller: _scrollController,
-      slivers: <Widget>[
-        SliverAppBar(
-          backgroundColor: Colors.grey,
-          expandedHeight: 200.0,
-          flexibleSpace: FlexibleSpaceBar(
-            background: Image.network(
-                "https://i.annihil.us/u/prod/marvel/images/OpenGraph-TW-1200x630.jpg"),
+    return Scaffold(
+      body: CustomScrollView(
+        controller: _scrollController,
+        slivers: <Widget>[
+          SliverAppBar(
+            backgroundColor: Colors.grey,
+            expandedHeight: 200.0,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Image.network(
+                  "https://i.annihil.us/u/prod/marvel/images/OpenGraph-TW-1200x630.jpg"),
+            ),
           ),
-        ),
-        SliverFixedExtentList(
-          itemExtent: 150.0,
-          delegate:
-              SliverChildBuilderDelegate((BuildContext context, int index) {
-            return Container(
-              height: 80,
-              child: GestureDetector(
-                child: new Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Center(
-                        child: Text(
-                      data[index]['name'] == null
-                          ? ''
-                          : data[index]['name'].toString(),
-                      style: TextStyle(fontSize: 32),
-                    )),
+          SliverFixedExtentList(
+            itemExtent: 150.0,
+            delegate:
+                SliverChildBuilderDelegate((BuildContext context, int index) {
+              return Container(
+                height: 80,
+                child: GestureDetector(
+                  child: new Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Center(
+                          child: Text(
+                        data[index]['name'] == null
+                            ? ''
+                            : data[index]['name'].toString(),
+                        style: TextStyle(fontSize: 32),
+                      )),
+                    ),
                   ),
-                ),
-                onTap: () {
-                  Navigator.canPop(context)
-                      ? Navigator.pop(context)
-                      : showBottomSheet(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: Container(
-                                color: Colors.grey[200],
-                                height: 250,
-                                width: double.infinity,
-                                child: FittedBox(
-                                  fit: BoxFit.fitHeight,
-                                  child: Column(
-                                    children: <Widget>[
-                                      SizedBox(
-                                        height: 20,
+                  onTap: () {
+                    showBottomSheet(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Container(
+                              color: Colors.grey[200],
+                              height: 250,
+                              width: double.infinity,
+                              child: FittedBox(
+                                fit: BoxFit.fitHeight,
+                                child: Column(
+                                  children: <Widget>[
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          data[index]['name'].toString(),
+                                          style: TextStyle(
+                                              fontSize: 28,
+                                              color: Colors.black),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      child: Text(
+                                        data[index]['description'].toString(),
                                       ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          Text(
-                                            data[index]['name'].toString(),
-                                            style: TextStyle(
-                                                fontSize: 28,
-                                                color: Colors.black),
-                                          )
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 20,
-                                      ),
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        child: Text(
-                                          data[index]['description'].toString(),
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Center(
+                                      child: Container(
+                                        height: 200,
+                                        margin: EdgeInsets.only(bottom: 20),
+                                        child: Image.network(
+                                          data[index]['thumbnail']['path']
+                                                  .toString() +
+                                              '.' +
+                                              data[index]['thumbnail']
+                                                      ['extension']
+                                                  .toString(),
+                                          fit: BoxFit.fill,
                                         ),
                                       ),
-                                      SizedBox(
-                                        height: 20,
-                                      ),
-                                      Center(
-                                        child: Container(
-                                          height: 200,
-                                          margin: EdgeInsets.only(bottom: 20),
-                                          child: Image.network(
-                                            data[index]['thumbnail']['path']
-                                                    .toString() +
-                                                '.' +
-                                                data[index]['thumbnail']
-                                                        ['extension']
-                                                    .toString(),
-                                            fit: BoxFit.fill,
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                                    )
+                                  ],
                                 ),
                               ),
-                            );
-                          });
-                },
-              ),
-            );
-          }, childCount: data.length),
-        ),
-      ],
+                            ),
+                          );
+                        });
+                  },
+                ),
+              );
+            }, childCount: data.length),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class Loader extends StatefulWidget {
   static const routeName = '/loader';
+  static const pageTitle = 'Native Loader Animation';
   @override
   State createState() => new LoaderState();
 }

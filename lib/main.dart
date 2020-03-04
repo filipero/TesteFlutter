@@ -43,8 +43,12 @@ class _MyAppState extends State<MyApp> {
         routes: {
           '/': (ctx) => HomePage(),
           MarvelHeroes.routeName: (ctx) => MarvelHeroes(),
-          ApiList.routeName: (ctx) => ApiList(),
+          /* ApiList.routeName: (ctx) => ApiList(),
           BottomBarAnim.routeName: (ctx) => BottomBarAnim(),
+          ToastNotify.routeName: (ctx) => ToastNotify(),
+          Loader.routeName: (ctx) => Loader(),
+          RiveAnim.routeName: (ctx) => RiveAnim(),
+          DraggableItems.routeName: (ctx) => DraggableItems(), */
         },
         onUnknownRoute: (settings) {
           return MaterialPageRoute(builder: (ctx) => HomePage());
@@ -57,14 +61,14 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-Widget _buildList(context, routeName) {
+Widget _buildList(context, routeName, pageTitle) {
   return GestureDetector(
     onTap: () => Navigator.pushNamed(context, routeName),
     child: Card(
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Text(
-          routeName,
+          pageTitle,
           style: Theme.of(context).textTheme.title,
         ),
       ),
@@ -81,9 +85,13 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ListView(
         children: <Widget>[
-          _buildList(context, ApiList.routeName),
-          _buildList(context, MarvelHeroes.routeName),
-          _buildList(context, BottomBarAnim.routeName)
+          _buildList(context, MarvelHeroes.routeName, MarvelHeroes.pageTitle),
+          /* _buildList(context, ApiList.routeName, ApiList.pageTitle),
+          _buildList(context, BottomBarAnim.routeName, BottomBarAnim.pageTitle),
+          _buildList(context, ToastNotify.routeName, ToastNotify.pageTitle),
+          _buildList(context, Loader.routeName, Loader.pageTitle),
+          _buildList(context, RiveAnim.routeName, RiveAnim.pageTitle),
+          _buildList(context, DraggableItems.routeName, DraggableItems.pageTitle), */
         ],
       ),
     );

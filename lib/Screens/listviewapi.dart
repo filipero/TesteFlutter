@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 
 class ApiList extends StatefulWidget {
   static const routeName = '/apilist';
+  static const pageTitle = 'List View of an API';
   @override
   ApiListState createState() => new ApiListState();
 }

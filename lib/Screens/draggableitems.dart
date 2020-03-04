@@ -3,6 +3,7 @@ import '../Widgets/moveablestackitem.dart';
 
 class DraggableItems extends StatefulWidget {
   static const routeName = '/draggableitems';
+  static const pageTitle = 'Draggable Items';
   @override
   _DraggableItemsState createState() => _DraggableItemsState();
 }

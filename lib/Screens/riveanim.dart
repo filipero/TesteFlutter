@@ -5,6 +5,8 @@ import 'package:flare_flutter/flare_actor.dart';
 
 class RiveAnim extends StatefulWidget {
   static const routeName = '/riveanim';
+  static const pageTitle = 'Rive Switch Animation';
+
   @override
   State createState() => new RiveAnimState();
 }
