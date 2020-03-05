@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 class ApiList extends StatefulWidget {
   static const routeName = '/apilist';
-  static const pageTitle = 'List View of an API';
+  static const pageTitle = 'Listagem a partir de uma API REST';
   @override
   ApiListState createState() => new ApiListState();
 }
@@ -31,16 +31,21 @@ class ApiListState extends State<ApiList> {
 
   @override
   Widget build(BuildContext context) {
-    return new ListView.builder(
-      itemCount: data == null ? 0 : data.length,
-      itemBuilder: (BuildContext context, int index) {
-        return Container(
-          height: 80,
-          child: new Card(
-            child: new Text(data[index]["title"]),
-          ),
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(ApiList.pageTitle),
+      ),
+      body: ListView.builder(
+        itemCount: data == null ? 0 : data.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            height: 80,
+            child: Card(
+              child: Text(data[index]["title"]),
+            ),
+          );
+        },
+      ),
     );
   }
 }

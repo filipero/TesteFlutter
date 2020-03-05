@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Loader extends StatefulWidget {
   static const routeName = '/loader';
-  static const pageTitle = 'Native Loader Animation';
+  static const pageTitle = 'Animação de carregamento Flutter';
   @override
   State createState() => new LoaderState();
 }
@@ -34,29 +34,32 @@ class LoaderState extends State<Loader> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Container(
-          margin: EdgeInsets.only(bottom: 5),
-          color: Colors.blue,
-          height: 3.0,
-          width: animation.value * 100,
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(Loader.pageTitle),
         ),
-        Container(
-          margin: EdgeInsets.only(bottom: 5),
-          color: Colors.blue,
-          height: 3.0,
-          width: animation.value * 75,
-        ),
-        Container(
-          margin: EdgeInsets.only(bottom: 5),
-          color: Colors.blue,
-          height: 3.0,
-          width: animation.value * 50,
-        ),
-      ],
-    );
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(bottom: 5),
+              color: Colors.blue,
+              height: 3.0,
+              width: animation.value * 100,
+            ),
+            Container(
+              margin: EdgeInsets.only(bottom: 5),
+              color: Colors.blue,
+              height: 3.0,
+              width: animation.value * 75,
+            ),
+            Container(
+              margin: EdgeInsets.only(bottom: 5),
+              color: Colors.blue,
+              height: 3.0,
+              width: animation.value * 50,
+            ),
+          ],
+        ));
   }
 }
-/*  */

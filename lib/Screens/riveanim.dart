@@ -5,7 +5,7 @@ import 'package:flare_flutter/flare_actor.dart';
 
 class RiveAnim extends StatefulWidget {
   static const routeName = '/riveanim';
-  static const pageTitle = 'Rive Switch Animation';
+  static const pageTitle = 'Animação de um Switch utilizando RIVE FLARE';
 
   @override
   State createState() => new RiveAnimState();
@@ -23,41 +23,45 @@ class RiveAnimState extends State<RiveAnim>
   ];
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Container(child: Text('Aperte no Switch para mudar o estado')),
-          Container(
-            height: 40,
-            width: 80,
-            child: GestureDetector(
-              onTap: () {
-                this.setState(() {
-                  index == 3 ? index = 0 : index++;
-                  index == 1
-                      ? Timer(Duration(milliseconds: 500), () {
-                          setState(() {
-                            index++;
-                          });
-                        })
-                      : Timer(Duration(milliseconds: 500), () {
-                          setState(() {
-                            index = 0;
-                          });
-                        });
-                });
-              },
-              child: FlareActor(
-                "assets/switch_daytime.flr",
-                animation: animations[index],
-                alignment: Alignment.center,
-                fit: BoxFit.contain,
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(RiveAnim.pageTitle),
+        ),
+        body: Card(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Container(child: Text('Aperte no Switch para mudar o estado')),
+              Container(
+                height: 40,
+                width: 80,
+                child: GestureDetector(
+                  onTap: () {
+                    this.setState(() {
+                      index == 3 ? index = 0 : index++;
+                      index == 1
+                          ? Timer(Duration(milliseconds: 500), () {
+                              setState(() {
+                                index++;
+                              });
+                            })
+                          : Timer(Duration(milliseconds: 500), () {
+                              setState(() {
+                                index = 0;
+                              });
+                            });
+                    });
+                  },
+                  child: FlareActor(
+                    "assets/switch_daytime.flr",
+                    animation: animations[index],
+                    alignment: Alignment.center,
+                    fit: BoxFit.contain,
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
-        ],
-      ),
-    );
+        ));
   }
 }

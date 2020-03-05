@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 class MarvelHeroes extends StatefulWidget {
   static const routeName = '/marvel';
-  static const pageTitle = 'Marvel Heroes List';
+  static const pageTitle = 'Lista de heróis da Marvel';
   MarvelHeroes({Key key, this.title}) : super(key: key);
   final String title;
 
