@@ -20,7 +20,7 @@ class _MarvelHeroesState extends State<MarvelHeroes>
 
   fetch() async {
     final response = await http.get(
-        'https://gateway.marvel.com:443/v1/public/characters?&offset=${offset}&limit=1&ts=1&apikey=7568ebb3af2e8b30c165f2e7fd029aa4&hash=503f97cf67c106047ddfb8cfa145af58');
+        'https://gateway.marvel.com:443/v1/public/characters?&offset=$offset&limit=1&ts=1&apikey=7568ebb3af2e8b30c165f2e7fd029aa4&hash=503f97cf67c106047ddfb8cfa145af58');
     if (response.statusCode == 200) {
       setState(() {
         data.addAll(json.decode(response.body)['data']['results']);

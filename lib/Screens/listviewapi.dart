@@ -27,6 +27,7 @@ class ApiListState extends State<ApiList> {
   @override
   void initState() {
     this.getData();
+    super.initState();
   }
 
   @override
